@@ -9,7 +9,6 @@ TagManager:
   - buildSite
   - ground
   - buildSiteFull
-  - projectile
   - GameManager
   - TowerManager
   - SoundManager
