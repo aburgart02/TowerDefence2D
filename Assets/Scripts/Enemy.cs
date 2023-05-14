@@ -48,13 +48,16 @@ public class Enemy : MonoBehaviour
         if (collider2D.CompareTag("checkpoint"))
         {
             target += 1;
-            if (wayPoints[target].position.x > enemy.position.x)
+            if (target != wayPoints.Length)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
+                if (wayPoints[target].position.x > enemy.position.x)
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
         }
         else if (collider2D.CompareTag("Finish"))
