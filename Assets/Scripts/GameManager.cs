@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public int killedEnemies;
     public int escapedEnemies;
     public int enemiesCount;
+    public int spawnedEnemies;
     
     private GameStatus currentState = GameStatus.Start;
     private AudioSource audioSource;
@@ -65,12 +66,13 @@ public class GameManager : MonoBehaviour
     
     IEnumerator Spawn()
     {
-        if (enemiesPerSpawn > 0 && enemyList.Count < enemiesCount)
+        if (enemiesPerSpawn > 0 && spawnedEnemies < enemiesCount)
         {
             for (int i = 0; i < enemiesPerSpawn; i++)
             {
-                if (enemyList.Count < enemiesCount)
+                if (spawnedEnemies < enemiesCount)
                 {
+                    spawnedEnemies += 1;
                     Enemy newEnemy = Instantiate(enemies[Random.Range(0, enemies.Length)]);
                     newEnemy.transform.position = spawnPoint.transform.position;
                     enemyList.Add(newEnemy);
@@ -188,6 +190,7 @@ public class GameManager : MonoBehaviour
         DestroyAllBullets();
         killedEnemies = 0;
         escapedEnemies = 0;
+        spawnedEnemies = 0;
         enemiesCount = enemiesWaves[waveNumber];
         moneyLabel.text = currentMoney.ToString();
         currentWaveLabel.text = "Wave " + (waveNumber + 1);

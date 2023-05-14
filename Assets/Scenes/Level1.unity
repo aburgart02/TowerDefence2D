@@ -45677,6 +45677,7 @@ MonoBehaviour:
   killedEnemies: 0
   escapedEnemies: 0
   enemiesCount: 0
+  spawnedEnemies: 0
   enemyList: []
   towerManager: {fileID: 0}
   soundManager: {fileID: 0}
