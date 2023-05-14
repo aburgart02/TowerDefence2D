@@ -172,13 +172,13 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 4256909738203917074, guid: 51bf60b95c07bbc4bbd8ac6ff60276b7, type: 3}
   - {fileID: 110478729418096329, guid: 35fcb25321b92a04390b06f98b064169, type: 3}
-  - {fileID: 1377558986751090120, guid: 7a58fe29f40fe074b87c55aba52bda6f, type: 3}
+  - {fileID: 7244024323221462408, guid: 7a58fe29f40fe074b87c55aba52bda6f, type: 3}
   - {fileID: 4391203851538508788, guid: 6cd6a18cca3eed34ca75a7591b5187d2, type: 3}
   - {fileID: 2767290550365079364, guid: 62be4bcacab2123448e9e6e03d3e1c37, type: 3}
   - {fileID: 1027827855289848890, guid: a6f598948b08ecb4c8ce8ed7a4967635, type: 3}
-  - {fileID: 4082552782460915905, guid: 733726a9ec7914a4d822a7891f9e0b5c, type: 3}
+  - {fileID: 519132956123323517, guid: 733726a9ec7914a4d822a7891f9e0b5c, type: 3}
   - {fileID: 7577753714448641486, guid: 36b642a42ba6eaa4494e3abdadaa48ad, type: 3}
-  - {fileID: 7446851053887626388, guid: 3a1a17ecd29f48440b5eecf75122c5c7, type: 3}
+  - {fileID: 2344496985989145879, guid: 3a1a17ecd29f48440b5eecf75122c5c7, type: 3}
   navigationUpdate: 0.01
   healthPoints: 100
   rewardAmount: 3

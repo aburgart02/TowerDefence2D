@@ -46,7 +46,17 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("checkpoint"))
+        {
             target += 1;
+            if (wayPoints[target].position.x > enemy.position.x)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
         else if (collider2D.CompareTag("Finish"))
         {
             gameManager.escapedEnemies += 1;
