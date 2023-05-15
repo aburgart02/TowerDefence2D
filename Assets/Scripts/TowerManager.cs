@@ -75,7 +75,6 @@ public class TowerManager : MonoBehaviour
 
     private void PlaceTower(RaycastHit2D hit)
     {
-        Debug.Log(gameManager.currentMoney);
         if (!EventSystem.current.IsPointerOverGameObject() && TowerButtonPressed != null 
                                                            && TowerButtonPressed.TowerPrice <= gameManager.currentMoney)
         {

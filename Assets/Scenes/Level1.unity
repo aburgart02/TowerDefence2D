@@ -32663,6 +32663,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 82185894952812090, guid: 806993f483a2eb44492a94011612d5e8,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 114869064669128236, guid: 806993f483a2eb44492a94011612d5e8,
         type: 3}
       propertyPath: hitClip

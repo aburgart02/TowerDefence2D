@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     void Start () {
         playButton.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.2f;
         towerManager = GameObject.Find("TowerManager").GetComponent<TowerManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         ShowMenu();
