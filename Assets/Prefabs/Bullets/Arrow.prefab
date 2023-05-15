@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48dee63cb06e56e4ab31befa79667cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackStrength: 5
+  attackStrength: 4
   bulletType: 0
   target: {fileID: 0}
   lastPosition: {x: 0, y: 0}

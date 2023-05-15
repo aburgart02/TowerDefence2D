@@ -45820,9 +45820,9 @@ MonoBehaviour:
   enemiesPerSpawn: 1
   playButtonLabel: {fileID: 145974714}
   playButton: {fileID: 1808592723}
-  startMoney: 100
-  startCastleHealth: 100
-  enemiesWaves: 6400000002000000030000000400000005000000
+  startMoney: 10
+  startCastleHealth: 10
+  enemiesWaves: 050000000a0000000f0000001400000019000000
   currentMoney: 0
   currentCastleHealth: 0
   killedEnemies: 0
@@ -45830,6 +45830,13 @@ MonoBehaviour:
   enemiesCount: 0
   spawnedEnemies: 0
   enemyList: []
+  spawnDelays:
+  - 2
+  - 1.8
+  - 1.6
+  - 1.4
+  - 1.2
+  spawnDelay: 0
   towerManager: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &1677008318

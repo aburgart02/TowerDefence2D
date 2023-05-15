@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public enum GameStatus
@@ -45,7 +46,8 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     public List<Enemy> enemyList = new();
-    const float SpawnDelay = 2f;
+    public List<float> spawnDelays = new ();
+    public float spawnDelay;
     
     public TowerManager towerManager;
     public SoundManager soundManager;
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
                     enemyList.Add(newEnemy);
                 }
             }
-            yield return new WaitForSeconds(SpawnDelay);
+            yield return new WaitForSeconds(spawnDelay);
             StartCoroutine(Spawn());
         }
     }
@@ -191,6 +193,7 @@ public class GameManager : MonoBehaviour
         killedEnemies = 0;
         escapedEnemies = 0;
         spawnedEnemies = 0;
+        spawnDelay = spawnDelays[waveNumber];
         enemiesCount = enemiesWaves[waveNumber];
         moneyLabel.text = currentMoney.ToString();
         currentWaveLabel.text = "Wave " + (waveNumber + 1);

@@ -180,7 +180,7 @@ MonoBehaviour:
   - {fileID: 7577753714448641486, guid: 36b642a42ba6eaa4494e3abdadaa48ad, type: 3}
   - {fileID: 2344496985989145879, guid: 3a1a17ecd29f48440b5eecf75122c5c7, type: 3}
   navigationUpdate: 0.01
-  healthPoints: 100
-  rewardAmount: 3
+  healthPoints: 35
+  rewardAmount: 7
   gameManager: {fileID: 0}
   soundManager: {fileID: 0}
