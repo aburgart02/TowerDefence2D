@@ -80,12 +80,12 @@ public class Enemy : MonoBehaviour
         if (healthPoints - hitPoints > 0)
         {
             healthPoints -= hitPoints;
-            anim.Play("Hurt");
+            anim.Play("TakeDamage");
             gameManager.AudioSource.PlayOneShot(soundManager.HitClip);
         }
         else
         {
-            anim.SetTrigger("didDie");
+            anim.Play("Death");
             Die();
         }
     }

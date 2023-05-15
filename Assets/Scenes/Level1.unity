@@ -38013,7 +38013,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 114833652801850606, guid: 697f8da902db5bf4981bcd80f57cf657, type: 3}
   - {fileID: 114281460287306446, guid: 6b8603f90542c11499f30fec4d74287e, type: 3}
-  - {fileID: 114944403972158564, guid: 0aef1d8345d93ef439ac7d205cd15b18, type: 3}
+  - {fileID: -5001307732788166396, guid: 0aef1d8345d93ef439ac7d205cd15b18, type: 3}
   enemiesPerSpawn: 1
   playButtonLabel: {fileID: 145974714}
   playButton: {fileID: 1808592723}
