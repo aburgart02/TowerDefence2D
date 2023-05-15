@@ -27,12 +27,15 @@ public class TowerManager : MonoBehaviour
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-            if(hit.collider.CompareTag("buildSite"))
+            if (hit.collider)
             {
-                buildTile = hit.collider;
-                buildTile.tag = "buildSiteFull";
-                RegisterBuildSite(buildTile);
-                PlaceTower(hit);
+                if (hit.collider.CompareTag("buildSite"))
+                {
+                    buildTile = hit.collider;
+                    buildTile.tag = "buildSiteFull";
+                    RegisterBuildSite(buildTile);
+                    PlaceTower(hit);
+                }
             }
         }
         
@@ -72,7 +75,9 @@ public class TowerManager : MonoBehaviour
 
     private void PlaceTower(RaycastHit2D hit)
     {
-        if (!EventSystem.current.IsPointerOverGameObject() && TowerButtonPressed != null)
+        Debug.Log(gameManager.currentMoney);
+        if (!EventSystem.current.IsPointerOverGameObject() && TowerButtonPressed != null 
+                                                           && TowerButtonPressed.TowerPrice <= gameManager.currentMoney)
         {
             Tower newTower = Instantiate(TowerButtonPressed.TowerObject);
             newTower.transform.position = hit.transform.position;
