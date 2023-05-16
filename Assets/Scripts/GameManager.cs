@@ -182,7 +182,6 @@ public class GameManager : MonoBehaviour
             waveNumber = 0;
             currentMoney = startMoney;
             currentCastleHealth = startCastleHealth;
-            towerManager.RenameTagsBuildSites();
             AudioSource.PlayOneShot(soundManager.NewGameClip);
             if (currentState != GameStatus.Start)
                 towerManager.DestroyAllTower();

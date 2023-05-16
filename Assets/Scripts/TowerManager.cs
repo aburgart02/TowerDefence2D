@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Linq;
+using DefaultNamespace;
 
 public class TowerManager : MonoBehaviour
 {
     public TowerButton TowerButtonPressed { get; set; }
     private SpriteRenderer spriteRenderer;
-    private readonly List<Tower> towerList = new();
-    private readonly List<Collider2D> buildList = new();
-    private Collider2D buildTile;
+    public List<Tower> towerList = new();
     public GameManager gameManager;
     public SoundManager soundManager;
-    
-	void Start () {
+
+    void Start () 
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        buildTile = GetComponent<Collider2D>();
         spriteRenderer.enabled = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
@@ -22,19 +22,22 @@ public class TowerManager : MonoBehaviour
     
 	void Update ()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            DisableDragSprite();
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            RaycastHit2D[] hit = Physics2D.RaycastAll(worldPoint, Vector2.zero);
 
-            if (hit.collider)
+            if (hit.Length > 0)
             {
-                if (hit.collider.CompareTag("buildSite"))
+                if (hit.Any(x => x.collider.CompareTag("buildSite")) 
+                    && !hit.Any(x => x.collider.CompareTag("Tower")))
                 {
-                    buildTile = hit.collider;
-                    buildTile.tag = "buildSiteFull";
-                    RegisterBuildSite(buildTile);
-                    PlaceTower(hit);
+                    PlaceTower(hit.First());
                 }
             }
         }
@@ -45,30 +48,17 @@ public class TowerManager : MonoBehaviour
         }
     }
 
-    private void RegisterBuildSite(Collider2D buildTag)
-    {
-        buildList.Add(buildTag);
-    }
-
     private void RegisterTower(Tower tower)
     {
         towerList.Add(tower);
-    }
-
-    public void RenameTagsBuildSites()
-    {
-        foreach(Collider2D buildTag in buildList)
-        {
-            buildTag.tag = "buildSite";
-        }
-        buildList.Clear();
     }
 
     public void DestroyAllTower()
     {
         foreach(Tower tower in towerList)
         {
-            Destroy(tower.gameObject);
+            if (tower != null)
+                Destroy(tower.gameObject);
         }
         towerList.Clear();
     }
@@ -83,6 +73,7 @@ public class TowerManager : MonoBehaviour
             BuyTower(TowerButtonPressed.TowerPrice);
             gameManager.AudioSource.PlayOneShot(soundManager.TowerBuiltClip);
             RegisterTower(newTower);
+            TowerButtonPressed = null;
             DisableDragSprite();
         }
     }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4968215442662010}
   - component: {fileID: 212318091997623296}
   - component: {fileID: 114887529659666132}
+  - component: {fileID: 4049624723882419665}
   m_Layer: 0
   m_Name: FireballTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,3 +104,29 @@ MonoBehaviour:
     type: 3}
   gameManager: {fileID: 0}
   soundManager: {fileID: 0}
+--- !u!61 &4049624723882419665
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613724880446286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0060842037, y: 0.2908378}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.26}
+    oldSize: {x: 1.8962963, y: 1.8962963}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2513711, y: 0.95932966}
+  m_EdgeRadius: 0

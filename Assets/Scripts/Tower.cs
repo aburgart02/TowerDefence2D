@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     private Enemy targetEnemy;
     private float timer;
     private bool canShoot;
+    public bool isDestroyed;
     
     public GameManager gameManager;
     public SoundManager soundManager;
@@ -25,18 +26,21 @@ public class Tower : MonoBehaviour
     }
     
 	void Update () {
-        timer -= Time.deltaTime;
-        
-        if (timer <= 0f)
+        if (!isDestroyed)
         {
-            canShoot = true;
-            timer = timeBetweenAttacks;
-        }
-        else
-            canShoot = false;
+            timer -= Time.deltaTime;
 
-        if (canShoot)
-            Attack();
+            if (timer <= 0f)
+            {
+                canShoot = true;
+                timer = timeBetweenAttacks;
+            }
+            else
+                canShoot = false;
+
+            if (canShoot)
+                Attack();
+        }
     }
 
     private void Attack()
