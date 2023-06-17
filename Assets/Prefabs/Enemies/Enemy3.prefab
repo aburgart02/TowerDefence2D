@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5199442840264705587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -170,15 +170,15 @@ MonoBehaviour:
   exitPoint: {fileID: 4323052364094985197, guid: b6838dc004fddeb46a03479b574b7478,
     type: 3}
   wayPoints:
-  - {fileID: 4256909738203917074, guid: 51bf60b95c07bbc4bbd8ac6ff60276b7, type: 3}
+  - {fileID: 8452520394426026245, guid: 51bf60b95c07bbc4bbd8ac6ff60276b7, type: 3}
   - {fileID: 110478729418096329, guid: 35fcb25321b92a04390b06f98b064169, type: 3}
   - {fileID: 7244024323221462408, guid: 7a58fe29f40fe074b87c55aba52bda6f, type: 3}
-  - {fileID: 4391203851538508788, guid: 6cd6a18cca3eed34ca75a7591b5187d2, type: 3}
-  - {fileID: 2767290550365079364, guid: 62be4bcacab2123448e9e6e03d3e1c37, type: 3}
-  - {fileID: 1027827855289848890, guid: a6f598948b08ecb4c8ce8ed7a4967635, type: 3}
+  - {fileID: 429050349477673645, guid: 6cd6a18cca3eed34ca75a7591b5187d2, type: 3}
+  - {fileID: 3260621398448061484, guid: 62be4bcacab2123448e9e6e03d3e1c37, type: 3}
+  - {fileID: 7859209324123853272, guid: a6f598948b08ecb4c8ce8ed7a4967635, type: 3}
   - {fileID: 519132956123323517, guid: 733726a9ec7914a4d822a7891f9e0b5c, type: 3}
-  - {fileID: 7577753714448641486, guid: 36b642a42ba6eaa4494e3abdadaa48ad, type: 3}
-  - {fileID: 2344496985989145879, guid: 3a1a17ecd29f48440b5eecf75122c5c7, type: 3}
+  - {fileID: 3578858927335791276, guid: 36b642a42ba6eaa4494e3abdadaa48ad, type: 3}
+  - {fileID: 8575956888027216850, guid: 3a1a17ecd29f48440b5eecf75122c5c7, type: 3}
   navigationUpdate: 0.01
   healthPoints: 35
   rewardAmount: 7
