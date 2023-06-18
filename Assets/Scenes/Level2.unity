@@ -69852,39 +69852,39 @@ MonoBehaviour:
   exit: {fileID: 2098446450}
   playButtonLabel: {fileID: 646994194}
   playButton: {fileID: 1294069972}
-  startMoney: 20
+  startMoney: 10
   startCastleHealth: 15
   waves:
   - Light: 5
+    Medium: 3
+    Heavy: 2
+  - Light: 10
     Medium: 5
     Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
-  - Light: 5
-    Medium: 5
-    Heavy: 5
+  - Light: 10
+    Medium: 10
+    Heavy: 10
+  - Light: 10
+    Medium: 20
+    Heavy: 10
+  - Light: 15
+    Medium: 20
+    Heavy: 15
+  - Light: 15
+    Medium: 25
+    Heavy: 20
+  - Light: 0
+    Medium: 35
+    Heavy: 35
+  - Light: 0
+    Medium: 30
+    Heavy: 50
+  - Light: 0
+    Medium: 20
+    Heavy: 70
+  - Light: 0
+    Medium: 0
+    Heavy: 100
   currentMoney: 0
   currentCastleHealth: 0
   killedEnemies: 0
@@ -69897,6 +69897,11 @@ MonoBehaviour:
   - 1.6
   - 1.4
   - 1.2
+  - 1
+  - 0.8
+  - 0.7
+  - 0.6
+  - 0.5
   spawnDelay: 0
   towerManager: {fileID: 0}
   soundManager: {fileID: 0}
