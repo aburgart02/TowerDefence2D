@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 1.5
-  attackRange: 3
+  attackRange: 3.5
   bulletPrefab: {fileID: 114830923383085160, guid: a0192c71764edbb48ab2d13191a903fe,
     type: 3}
+  isDestroyed: 0
   gameManager: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!61 &-7699273062877712168
