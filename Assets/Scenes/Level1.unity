@@ -38305,9 +38305,9 @@ MonoBehaviour:
   spawnDelays:
   - 2
   - 1.8
-  - 1.6
   - 1.4
   - 1.2
+  - 1
   spawnDelay: 0
   towerManager: {fileID: 0}
   soundManager: {fileID: 0}

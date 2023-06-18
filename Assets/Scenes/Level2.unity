@@ -69852,9 +69852,36 @@ MonoBehaviour:
   exit: {fileID: 2098446450}
   playButtonLabel: {fileID: 646994194}
   playButton: {fileID: 1294069972}
-  startMoney: 10
-  startCastleHealth: 10
+  startMoney: 20
+  startCastleHealth: 15
   waves:
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 5
+    Medium: 5
+    Heavy: 5
   - Light: 5
     Medium: 5
     Heavy: 5
