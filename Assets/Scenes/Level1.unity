@@ -26694,6 +26694,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 114893775059800522, guid: 87384f54518e5c7418154a3e7c80ca15,
+        type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb58213115bb3d243910278859fb8e6f,
+        type: 3}
     - target: {fileID: 224804231242733890, guid: 87384f54518e5c7418154a3e7c80ca15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -28431,6 +28437,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1026305762}
     m_Modifications:
+    - target: {fileID: 114339851016279724, guid: 99e1cfb3cb2049b4a9302062d715254e,
+        type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6991988c1915892469263dcc8242bea5,
+        type: 3}
     - target: {fileID: 114610916342440378, guid: 99e1cfb3cb2049b4a9302062d715254e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -30021,6 +30033,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1026305762}
     m_Modifications:
+    - target: {fileID: 114409725534906360, guid: 95a6318815118b240a396e904f5a3d0f,
+        type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8603ec1da2f393e46bc12d7535eb8f0c,
+        type: 3}
     - target: {fileID: 114421165196728124, guid: 95a6318815118b240a396e904f5a3d0f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -35756,6 +35774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  gameManager: {fileID: 0}
 --- !u!212 &1535790866
 SpriteRenderer:
   m_ObjectHideFlags: 0
