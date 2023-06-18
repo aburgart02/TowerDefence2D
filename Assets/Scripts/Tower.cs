@@ -75,7 +75,7 @@ public class Tower : MonoBehaviour
                     bullet.transform.localPosition = shootPosition;
                 }
 
-                bullet.target = target;
+                bullet.targetEnemy = target;
 
                 if (bullet.BulletType == BulletType.Arrow)
                     gameManager.AudioSource.PlayOneShot(soundManager.ArrowClip);
@@ -84,7 +84,7 @@ public class Tower : MonoBehaviour
                 else if (bullet.BulletType == BulletType.Rock)
                     gameManager.AudioSource.PlayOneShot(soundManager.RockClip);
 
-                if (bullet.target == null || bullet.target.IsDead)
+                if (bullet.targetEnemy == null || bullet.targetEnemy.IsDead)
                     Destroy(bullet.gameObject);
                 else
                     StartCoroutine(MoveBullet(bullet, shootPosition));
@@ -94,20 +94,20 @@ public class Tower : MonoBehaviour
 
     IEnumerator MoveBullet (Bullet bullet, Vector3 shootPosition)
     {
-        while (bullet != null && !bullet.target.IsDead)
+        while (bullet != null && !bullet.targetEnemy.IsDead)
         {
-            var direction = bullet.target.transform.localPosition - shootPosition;
+            var direction = bullet.targetEnemy.transform.localPosition - shootPosition;
             var angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
             
-            bullet.transform.position += (bullet.target.transform.position - shootPosition).normalized * (5 * Time.deltaTime);
-            var bulletLocalPosition = bullet.target.transform.localPosition;
+            bullet.transform.position += (bullet.targetEnemy.transform.position - shootPosition).normalized * (5 * Time.deltaTime);
+            var bulletLocalPosition = bullet.targetEnemy.transform.localPosition;
             bullet.lastPosition = new Vector2(bulletLocalPosition.x, bulletLocalPosition.y);
             
             yield return null;
         }
         
-        if (bullet != null && bullet.target.IsDead)
+        if (bullet != null && bullet.targetEnemy.IsDead)
         {
             bullet.GetComponent<CircleCollider2D>().enabled = false;
             StartCoroutine(MoveForward(bullet, shootPosition));

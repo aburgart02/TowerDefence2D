@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
@@ -9,6 +11,7 @@ namespace DefaultNamespace
         public bool isActive;
         private Vector3 position;
         public GameManager gameManager;
+        public Text t;
         
         public void Start()
         {
@@ -20,6 +23,30 @@ namespace DefaultNamespace
 
         public void Update()
         {
+            Vector2 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D h = Physics2D.Raycast(wp, Vector2.zero);
+
+            if (h.collider)
+            {
+                if (h.collider.CompareTag("Tower") && isActive)
+                {
+                    var twr = h.collider.gameObject.GetComponent<Tower>();
+                    if (twr.towerLevel == 1)
+                        t.text = Convert.ToString(twr.upgradePrice) + "$";
+                }
+                
+                if (h.collider.CompareTag("BabkinaSarayka") && isActive)
+                {
+                    var babkinaSarayka = h.collider.gameObject.GetComponent<BabkinaSarayka>();
+                    if (!babkinaSarayka.isActive)
+                        t.text = "300$";
+                }
+            }
+            else
+            {
+                t.text = "";
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
                 DisableDragSprite();
@@ -53,6 +80,19 @@ namespace DefaultNamespace
                             tower.towerLevel += 1;
                             tower.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("c2");
                         }
+
+                        DisableDragSprite();
+                    }
+                    
+                    if (hit.collider.CompareTag("BabkinaSarayka") && isActive)
+                    {
+                        var babkinaSarayka = hit.collider.gameObject.GetComponent<BabkinaSarayka>();
+                        if (300 <= gameManager.currentMoney)
+                        {
+                            babkinaSarayka.isActive = true;
+                            gameManager.SubtractMoney(300);
+                        }
+                        
                         DisableDragSprite();
                     }
                 }
