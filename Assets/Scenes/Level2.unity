@@ -81157,7 +81157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1061fd56f843dd83f56b218a0b2f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 1
+  levelNumber: 2
   moneyLabel: {fileID: 571319056}
   currentWaveLabel: {fileID: 1148244980}
   enemiesCountLabel: {fileID: 1321977695}
