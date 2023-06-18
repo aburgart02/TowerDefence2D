@@ -38281,12 +38281,21 @@ MonoBehaviour:
   startMoney: 10
   startCastleHealth: 10
   waves:
-  - Light: 1
-    Medium: 2
-    Heavy: 3
   - Light: 3
+    Medium: 2
+    Heavy: 0
+  - Light: 5
     Medium: 3
-    Heavy: 3
+    Heavy: 2
+  - Light: 5
+    Medium: 5
+    Heavy: 5
+  - Light: 4
+    Medium: 8
+    Heavy: 6
+  - Light: 3
+    Medium: 7
+    Heavy: 15
   currentMoney: 0
   currentCastleHealth: 0
   killedEnemies: 0
