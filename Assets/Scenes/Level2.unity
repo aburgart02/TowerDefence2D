@@ -81593,21 +81593,21 @@ MonoBehaviour:
   - Light: 15
     Medium: 20
     Heavy: 15
-  - Light: 15
-    Medium: 25
+  - Light: 0
+    Medium: 40
     Heavy: 20
   - Light: 0
-    Medium: 35
-    Heavy: 35
+    Medium: 20
+    Heavy: 60
   - Light: 0
     Medium: 30
-    Heavy: 50
-  - Light: 0
-    Medium: 20
     Heavy: 70
   - Light: 0
-    Medium: 0
+    Medium: 20
     Heavy: 100
+  - Light: 0
+    Medium: 0
+    Heavy: 150
   currentMoney: 0
   currentCastleHealth: 0
   killedEnemies: 0
@@ -81615,16 +81615,16 @@ MonoBehaviour:
   enemiesCount: 0
   enemyList: []
   spawnDelays:
-  - 2
   - 1.8
   - 1.6
   - 1.4
   - 1.2
   - 1
   - 0.8
-  - 0.7
-  - 0.6
+  - 0.65
   - 0.5
+  - 0.45
+  - 0.35
   spawnDelay: 0
   towerManager: {fileID: 0}
   soundManager: {fileID: 0}
