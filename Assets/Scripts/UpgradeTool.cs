@@ -8,12 +8,14 @@ namespace DefaultNamespace
         private Sprite sprite;
         public bool isActive;
         private Vector3 position;
+        public GameManager gameManager;
         
         public void Start()
         {
             upgradeTool = GetComponent<SpriteRenderer>();
             upgradeTool.enabled = false;
             position = upgradeTool.transform.position;
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
         public void Update()
@@ -33,7 +35,24 @@ namespace DefaultNamespace
                     if (hit.collider.CompareTag("Tower") && isActive)
                     {
                         var tower = hit.collider.gameObject.GetComponent<Tower>();
-                        tower.shootsCount += 1;
+                        if (tower.towerType == "ArrowTower" && tower.towerLevel < 2 && tower.upgradePrice <= gameManager.currentMoney)
+                        {
+                            gameManager.SubtractMoney(tower.upgradePrice);
+                            tower.towerLevel += 1;
+                            tower.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("a2");
+                        }
+                        if (tower.towerType == "RockTower" && tower.towerLevel < 2 && tower.upgradePrice <= gameManager.currentMoney)
+                        {
+                            gameManager.SubtractMoney(tower.upgradePrice);
+                            tower.towerLevel += 1;
+                            tower.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("b2");
+                        }
+                        if (tower.towerType == "FireballTower" && tower.towerLevel < 2 && tower.upgradePrice <= gameManager.currentMoney)
+                        {
+                            gameManager.SubtractMoney(tower.upgradePrice);
+                            tower.towerLevel += 1;
+                            tower.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("c2");
+                        }
                         DisableDragSprite();
                     }
                 }

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a78a3f1f9859348e8b266f807ae7b6b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6991988c1915892469263dcc8242bea5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 114830923383085160, guid: a0192c71764edbb48ab2d13191a903fe,
     type: 3}
   isDestroyed: 0
-  shootsCount: 1
+  towerLevel: 1
+  upgradePrice: 20
+  towerType: RockTower
   gameManager: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!61 &-7699273062877712168
@@ -122,7 +124,7 @@ BoxCollider2D:
   m_Offset: {x: -0.008769035, y: 0.14510506}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.26}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.8285714, y: 1.8285714}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5

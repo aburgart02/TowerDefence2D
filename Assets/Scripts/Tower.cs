@@ -15,9 +15,11 @@ public class Tower : MonoBehaviour
     private float timer;
     private bool canShoot;
     public bool isDestroyed;
-    public int shootsCount = 1;
+    public int towerLevel = 1;
+    public int upgradePrice;
+    public string towerType;
     private List<Vector3> shootPositions;
-    
+
     public GameManager gameManager;
     public SoundManager soundManager;
     
@@ -52,7 +54,7 @@ public class Tower : MonoBehaviour
 
     private void Attack()
     {
-        for (var i = 0; i < shootsCount; i++)
+        for (var i = 0; i < towerLevel; i++)
         {
             var target = GetClosestEnemyInRange();
             if (target != null)
@@ -61,13 +63,13 @@ public class Tower : MonoBehaviour
                 var bullet = Instantiate(bulletPrefab);
                 
                 Vector3 shootPosition = new Vector3();
-                if (shootsCount == 1)
+                if (towerLevel == 1)
                 {
                     shootPosition = transform.localPosition;
                     bullet.transform.localPosition = shootPosition;
                 }
 
-                if (shootsCount == 2)
+                if (towerLevel == 2)
                 {
                     shootPosition = shootPositions[i];
                     bullet.transform.localPosition = shootPosition;
