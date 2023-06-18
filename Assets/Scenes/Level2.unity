@@ -69852,7 +69852,7 @@ MonoBehaviour:
   exit: {fileID: 2098446450}
   playButtonLabel: {fileID: 646994194}
   playButton: {fileID: 1294069972}
-  startMoney: 10
+  startMoney: 15
   startCastleHealth: 15
   waves:
   - Light: 5

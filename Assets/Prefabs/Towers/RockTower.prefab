@@ -108,6 +108,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 114957193282807176, guid: 636a9bde9f3723f4084fba903d670441,
     type: 3}
   isDestroyed: 0
+  shootsCount: 1
   gameManager: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!61 &4672183184148002232
