@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour
                 playButtonLabel.text = "Start game";
                 break;
             case GameStatus.Win:
-                playButtonLabel.text = "You won. Play again";
+                playButtonLabel.text = "You won";
                 break;
             case GameStatus.GameOver:
                 playButtonLabel.text = "Game Over. Play Again";
@@ -173,6 +174,10 @@ public class GameManager : MonoBehaviour
     
     public void PlayButtonPressed()
     {
+        if (currentState == GameStatus.Win)
+        {
+            FindObjectOfType<LevelManager>().LoadLevel();
+        }
         if (currentState == GameStatus.Next)
         {
             waveNumber += 1;
