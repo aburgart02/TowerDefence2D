@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        wayPoints = gameManager.wayPoints;
+        exitPoint = gameManager.exit;
     }
     
 	void Update ()

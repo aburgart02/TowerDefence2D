@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameStatus
@@ -12,6 +12,8 @@ public enum GameStatus
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private int levelNumber;
     [SerializeField]
     private Text moneyLabel;
     [SerializeField]
@@ -27,13 +29,21 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int enemiesPerSpawn;
     [SerializeField]
+    public Transform[] wayPoints;
+    [SerializeField]
+    public Transform exit;
+    [SerializeField]
     private Text playButtonLabel;
     [SerializeField]
     private Button playButton;
 
     public int startMoney;
     public int startCastleHealth;
-    public List<int> enemiesWaves = new();
+    
+    [SerializeField]
+    public List<Wave> waves;
+    
+    private List<Wave> enemiesWaves = new List<Wave>();
     
     private int waveNumber;
     public int currentMoney;
@@ -41,8 +51,7 @@ public class GameManager : MonoBehaviour
     public int killedEnemies;
     public int escapedEnemies;
     public int enemiesCount;
-    public int spawnedEnemies;
-    
+
     private GameStatus currentState = GameStatus.Start;
     private AudioSource audioSource;
 
@@ -61,6 +70,8 @@ public class GameManager : MonoBehaviour
         audioSource.volume = 0.2f;
         towerManager = GameObject.Find("TowerManager").GetComponent<TowerManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        foreach (var wave in waves)
+            enemiesWaves.Add(new Wave(wave.Light, wave.Medium, wave.Heavy));
         ShowMenu();
 	}
     
@@ -70,14 +81,30 @@ public class GameManager : MonoBehaviour
     
     IEnumerator Spawn()
     {
-        if (enemiesPerSpawn > 0 && spawnedEnemies < enemiesCount)
+        if (enemiesPerSpawn > 0 && enemiesWaves[waveNumber].TotalCount > 0)
         {
             for (int i = 0; i < enemiesPerSpawn; i++)
             {
-                if (spawnedEnemies < enemiesCount)
+                if (enemiesWaves[waveNumber].TotalCount > 0)
                 {
-                    spawnedEnemies += 1;
-                    Enemy newEnemy = Instantiate(enemies[Random.Range(0, enemies.Length)]);
+                    var available = new List<int>();
+                    
+                    if (enemiesWaves[waveNumber].Light > 0)
+                        available.Add(0);
+                    if (enemiesWaves[waveNumber].Medium > 0)
+                        available.Add(1);
+                    if (enemiesWaves[waveNumber].Heavy > 0)
+                        available.Add(2);
+                    
+                    var rand = Random.Range(0, available.Count);
+                    var enemyType = available[rand];
+                    var newEnemy = Instantiate(enemies[enemyType]);
+                    if (enemyType == 0)
+                        enemiesWaves[waveNumber].Light -= 1;
+                    if (enemyType == 1)
+                        enemiesWaves[waveNumber].Medium -= 1;
+                    if (enemyType == 2)
+                        enemiesWaves[waveNumber].Heavy -= 1;
                     newEnemy.transform.position = spawnPoint.transform.position;
                     enemyList.Add(newEnemy);
                 }
@@ -176,7 +203,16 @@ public class GameManager : MonoBehaviour
     {
         if (currentState == GameStatus.Win)
         {
-            FindObjectOfType<LevelManager>().LoadLevel();
+            foreach (var o in FindObjectsOfType(typeof(GameObject)))
+            {
+                if (o.name == "Main Camera")
+                    continue;
+                Destroy(o);
+            }
+            if (levelNumber == 1)
+                SceneManager.LoadScene("Level2");
+            if (levelNumber == 2)
+                SceneManager.LoadScene("Level1");
         }
         if (currentState == GameStatus.Next)
         {
@@ -190,6 +226,9 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayOneShot(soundManager.NewGameClip);
             if (currentState != GameStatus.Start)
                 towerManager.DestroyAllTower();
+            enemiesWaves = new List<Wave>();
+            foreach (var wave in waves)
+                enemiesWaves.Add(new Wave(wave.Light, wave.Medium, wave.Heavy));
         }
 
         Time.timeScale = 1;
@@ -197,9 +236,8 @@ public class GameManager : MonoBehaviour
         DestroyAllBullets();
         killedEnemies = 0;
         escapedEnemies = 0;
-        spawnedEnemies = 0;
         spawnDelay = spawnDelays[waveNumber];
-        enemiesCount = enemiesWaves[waveNumber];
+        enemiesCount = enemiesWaves[waveNumber].TotalCount;
         moneyLabel.text = currentMoney.ToString();
         currentWaveLabel.text = "Wave " + (waveNumber + 1);
         castleHealthLabel.text = "Castle health: " + currentCastleHealth;
