@@ -183,11 +183,11 @@ public class GameManager : MonoBehaviour
         switch (currentState)
         {
             case GameStatus.Start:
-                playButtonLabel.text = "Start first level";
+                playButtonLabel.text = "Start level";
                 break;
             case GameStatus.Win:
                 if (levelNumber == 1)
-                    playButtonLabel.text = "Start second level";
+                    playButtonLabel.text = "Start level";
                 if (levelNumber == 2)
                     playButtonLabel.text = "You won. Play again";
                 break;
