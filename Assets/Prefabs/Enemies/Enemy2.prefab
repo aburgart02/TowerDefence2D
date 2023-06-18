@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 202f0c8699d56264b8ff12b11cc0f889, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   - {fileID: 3578858927335791276, guid: 36b642a42ba6eaa4494e3abdadaa48ad, type: 3}
   - {fileID: 8575956888027216850, guid: 3a1a17ecd29f48440b5eecf75122c5c7, type: 3}
   navigationUpdate: 0.01
-  healthPoints: 16
+  healthPoints: 17
   rewardAmount: 1
   gameManager: {fileID: 0}
   soundManager: {fileID: 0}
