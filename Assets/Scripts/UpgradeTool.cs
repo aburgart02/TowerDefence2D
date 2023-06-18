@@ -87,7 +87,7 @@ namespace DefaultNamespace
                     if (hit.collider.CompareTag("BabkinaSarayka") && isActive)
                     {
                         var babkinaSarayka = hit.collider.gameObject.GetComponent<BabkinaSarayka>();
-                        if (300 <= gameManager.currentMoney)
+                        if (300 <= gameManager.currentMoney && !babkinaSarayka.isActive)
                         {
                             babkinaSarayka.isActive = true;
                             gameManager.SubtractMoney(300);
