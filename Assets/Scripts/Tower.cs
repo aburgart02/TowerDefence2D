@@ -15,6 +15,8 @@ public class Tower : MonoBehaviour
     private float timer;
     private bool canShoot;
     public bool isDestroyed;
+    public int shootsCount = 1;
+    private List<Vector3> shootPositions;
     
     public GameManager gameManager;
     public SoundManager soundManager;
@@ -23,6 +25,11 @@ public class Tower : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        shootPositions = new List<Vector3>()
+        {
+            new Vector3(transform.localPosition.x - 0.25f, transform.localPosition.y, transform.localPosition.z),
+            new Vector3(transform.localPosition.x + 0.25f, transform.localPosition.y, transform.localPosition.z)
+        };
     }
     
 	void Update () {
@@ -45,37 +52,53 @@ public class Tower : MonoBehaviour
 
     private void Attack()
     {
-        var target = GetClosestEnemyInRange();
-        if (target != null)
+        for (var i = 0; i < shootsCount; i++)
         {
-            canShoot = false;
-            var bullet = Instantiate(bulletPrefab);
-            bullet.transform.localPosition = transform.localPosition;
-            bullet.target = target;
+            var target = GetClosestEnemyInRange();
+            if (target != null)
+            {
+                canShoot = false;
+                var bullet = Instantiate(bulletPrefab);
+                
+                Vector3 shootPosition = new Vector3();
+                if (shootsCount == 1)
+                {
+                    shootPosition = transform.localPosition;
+                    bullet.transform.localPosition = shootPosition;
+                }
 
-            if (bullet.BulletType == BulletType.Arrow)
-                gameManager.AudioSource.PlayOneShot(soundManager.ArrowClip);
-            else if (bullet.BulletType == BulletType.Fireball)
-                gameManager.AudioSource.PlayOneShot(soundManager.FireballClip);
-            else if (bullet.BulletType == BulletType.Rock)
-                gameManager.AudioSource.PlayOneShot(soundManager.RockClip);
+                if (shootsCount == 2)
+                {
+                    shootPosition = shootPositions[i];
+                    bullet.transform.localPosition = shootPosition;
+                }
 
-            if (bullet.target == null || bullet.target.IsDead)
-                Destroy(bullet.gameObject);
-            else
-                StartCoroutine(MoveBullet(bullet));
+                bullet.target = target;
+
+                if (bullet.BulletType == BulletType.Arrow)
+                    gameManager.AudioSource.PlayOneShot(soundManager.ArrowClip);
+                else if (bullet.BulletType == BulletType.Fireball)
+                    gameManager.AudioSource.PlayOneShot(soundManager.FireballClip);
+                else if (bullet.BulletType == BulletType.Rock)
+                    gameManager.AudioSource.PlayOneShot(soundManager.RockClip);
+
+                if (bullet.target == null || bullet.target.IsDead)
+                    Destroy(bullet.gameObject);
+                else
+                    StartCoroutine(MoveBullet(bullet, shootPosition));
+            }
         }
     }
 
-    IEnumerator MoveBullet (Bullet bullet)
+    IEnumerator MoveBullet (Bullet bullet, Vector3 shootPosition)
     {
         while (bullet != null && !bullet.target.IsDead)
         {
-            var direction = bullet.target.transform.localPosition - transform.localPosition;
+            var direction = bullet.target.transform.localPosition - shootPosition;
             var angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
             
-            bullet.transform.position += (bullet.target.transform.position - transform.position).normalized * (5 * Time.deltaTime);
+            bullet.transform.position += (bullet.target.transform.position - shootPosition).normalized * (5 * Time.deltaTime);
             var bulletLocalPosition = bullet.target.transform.localPosition;
             bullet.lastPosition = new Vector2(bulletLocalPosition.x, bulletLocalPosition.y);
             
@@ -85,13 +108,13 @@ public class Tower : MonoBehaviour
         if (bullet != null && bullet.target.IsDead)
         {
             bullet.GetComponent<CircleCollider2D>().enabled = false;
-            StartCoroutine(MoveForward(bullet));
+            StartCoroutine(MoveForward(bullet, shootPosition));
             StartCoroutine(DestroyProjectile(bullet));
         }
         
     }
 
-    IEnumerator MoveForward (Bullet bullet)
+    IEnumerator MoveForward (Bullet bullet, Vector3 shootPosition)
     {
         while (bullet != null)
         {
@@ -100,7 +123,7 @@ public class Tower : MonoBehaviour
             var angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
             
-            bullet.transform.position += (new Vector3(bullet.lastPosition.x, bullet.lastPosition.y, 0) - transform.position).normalized * (5 * Time.deltaTime);
+            bullet.transform.position += (new Vector3(bullet.lastPosition.x, bullet.lastPosition.y, 0) - shootPosition).normalized * (5 * Time.deltaTime);
             
             yield return null;
         }
