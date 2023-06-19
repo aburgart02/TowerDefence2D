@@ -64,7 +64,9 @@ public class GameManager : MonoBehaviour
 
     public AudioSource AudioSource => audioSource;
 
-    void Start () {
+    void Start ()
+    {
+        Application.runInBackground = true;
         playButton.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.2f;
